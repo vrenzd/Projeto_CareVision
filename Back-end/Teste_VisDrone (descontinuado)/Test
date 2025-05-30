@@ -1,0 +1,5 @@
+import torch
+from ultralytics import YOLO
+
+model = YOLO("Modelo-PréTreinado/best.pt")
+print(model.names)
