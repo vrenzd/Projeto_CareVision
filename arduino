@@ -1,0 +1,118 @@
+
+#define SENSOR_PIN 7  // Pino do sensor ultrassônico
+3
+#define TEMP_SENSOR_PIN A0  // Pino do sensor de temperatura
+4
+#define LED_DISTANCIA 13    // LED para distância
+5
+#define LED_TEMPERATURA 12  // LED para temperatura
+6
+​
+7
+void setup() {
+8
+    pinMode(SENSOR_PIN, OUTPUT);
+9
+    pinMode(LED_DISTANCIA, OUTPUT);
+10
+    pinMode(LED_TEMPERATURA, OUTPUT);
+11
+    Serial.begin(9600);
+12
+}
+13
+​
+14
+void loop() {
+15
+    long duration;
+16
+    float distance;
+17
+    float temperature;
+18
+​
+19
+    // Envia pulso para o sensor ultrassônico
+20
+    pinMode(SENSOR_PIN, OUTPUT);
+21
+    digitalWrite(SENSOR_PIN, LOW);
+22
+    delayMicroseconds(2);
+23
+    digitalWrite(SENSOR_PIN, HIGH);
+24
+    delayMicroseconds(10);
+25
+    digitalWrite(SENSOR_PIN, LOW);
+26
+​
+27
+    // Lê o tempo do echo
+28
+    pinMode(SENSOR_PIN, INPUT);
+29
+    duration = pulseIn(SENSOR_PIN, HIGH);
+30
+    
+31
+    // Converte tempo em distância
+32
+    distance = (duration * 0.0343) / 2; 
+33
+    
+34
+    Serial.print("Distância: ");
+35
+    Serial.print(distance);
+36
+    Serial.println(" cm");
+37
+​
+38
+    // Lê a temperatura do sensor LM35
+39
+    temperature = analogRead(TEMP_SENSOR_PIN) * (5.0 / 1023.0) * 100.0;
+40
+    
+41
+    Serial.print("Temperatura: ");
+42
+    Serial.print(temperature);
+43
+    Serial.println(" °C");
+44
+​
+45
+    // Acende o LED da distância se for menor ou igual a 5 cm
+46
+    if (distance <= 5) {
+47
+        digitalWrite(LED_DISTANCIA, HIGH);
+48
+    } else {
+49
+        digitalWrite(LED_DISTANCIA, LOW);
+50
+    }
+51
+​
+52
+    // Acende o LED da temperatura se for maior que 100°C
+53
+    if (temperature > 100) {
+54
+        digitalWrite(LED_TEMPERATURA, HIGH);
+55
+    } else {
+56
+        digitalWrite(LED_TEMPERATURA, LOW);
+57
+    }
+58
+​
+59
+    delay(500);
+60
+}
