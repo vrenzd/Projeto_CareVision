@@ -43,17 +43,14 @@ Para executar o projeto CareVision, você precisaria:
 
 ## Métricas e Desempenho do Modelo
 
-Para avaliar o desempenho de um modelo de visão computacional como o CareVision, diversas métricas são importantes. Embora o projeto em si não gere logs de métricas de treinamento diretamente, podemos inferir e simular o tipo de dados que seriam relevantes para sua avaliação.
+Para avaliar o desempenho de um modelo de visão computacional como o CareVision, diversas métricas são importantes.
 
-### Métricas Operacionais (Simuladas)
+### Métricas Operacionais 
 
 As seguintes métricas são cruciais para entender o comportamento do sistema em tempo real:
--   **Velocidade dos Veículos**: A velocidade estimada dos veículos rastreados ao longo do tempo. Isso pode indicar padrões de tráfego ou anomalias.
--   **Frames Parado**: O número de frames consecutivos em que um veículo permanece parado. Um alto número pode indicar um veículo estacionado ou um acidente.
--   **IoU (Intersection over Union)**: Mede a sobreposição entre as caixas delimitadoras de dois objetos. Um IoU alto entre veículos pode indicar uma colisão.
 -   **Confiança das Detecções**: A probabilidade atribuída pelo modelo YOLO de que uma detecção está correta. Uma alta confiança indica detecções mais robustas.
 
-### Métricas de Avaliação do Modelo (Simuladas)
+### Métricas de Avaliação do Modelo 
 
 Para avaliar a qualidade do modelo de detecção de acidentes, métricas padrão em visão computacional são utilizadas:
 -   **Precisão (Precision)**: A proporção de detecções positivas corretas (verdadeiros positivos) em relação ao total de detecções positivas (verdadeiros positivos + falsos positivos). Indica quão confiável é o modelo em suas previsões.
