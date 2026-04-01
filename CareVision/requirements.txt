@@ -1,0 +1,10 @@
+ultralytics
+deep_sort_realtime
+opencv-python
+numpy
+pyautogui
+pywhatkit
+time
+geopy.geocoders
+twilio.rest
+datetime
